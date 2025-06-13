@@ -1,0 +1,13 @@
+<div>
+  <h2>Sales</h2>
+  <input type="text" placeholder="Scan barcode" (change)="scanProduct($event.target.value)" />
+  <ul>
+    <li *ngFor="let item of scannedItems">
+      {{ item.productName }} - ${{ item.price }}
+    </li>
+  </ul>
+  <p>Total: {{ totalAmount | currency }}</p>
+  <input type="number" [(ngModel)]="amountReceived" placeholder="Amount received" />
+  <button (click)="calculateChange()">Process Sale</button>
+  <p *ngIf="change > 0">Change: {{ change | currency }}</p>
+</div>
